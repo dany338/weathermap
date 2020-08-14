@@ -19,6 +19,8 @@ export const Container = styled.div`
   .recommended__weather {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
   }
 `;
 

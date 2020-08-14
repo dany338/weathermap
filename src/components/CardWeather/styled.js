@@ -9,10 +9,12 @@ export const Container = styled.div`
   box-shadow: 0 20px 25px -5px rgba(0,0,0,.1), 0 10px 10px -5px rgba(0,0,0,.04);
   transition: transform .2s ease-in-out,box-shadow .2s ease-in-out,-webkit-transform .2s ease-in-out;
   border-radius: 7px;
+  flex: 0.8;
+  background-color: lightgray;
 
   .weather__thumbnail {
-    height: 200px;
-    width: 600px;
+    height: 250px;
+    width: 40%;
     border-radius: 7px 7px 0 0;
     background-position: 50%;
     background-size: cover;
@@ -23,6 +25,31 @@ export const Container = styled.div`
     display: flex;
     margin-top: 10px;
     padding-right: 30px;
+  }
+
+  .weather__box {
+    text-align: center;
+  }
+
+  .weather__box .temp {
+    display: inline-block;
+    padding: 10px 25px;
+    color: #FFF;
+    font-size: 102px;
+    font-weight: 900;
+    text-shadow: 3px 6px rgba(0, 0, 0, 0.25);
+    background-color:rgba(255, 255, 255, 0.25);
+    border-radius: 16px;
+    margin: 30px 0px;
+    box-shadow: 3px 6px rgba(0, 0, 0, 0.25);
+  }
+
+  .weather__box .weather {
+    color: #FFF;
+    font-size: 48px;
+    font-weight: 700;
+    font-style: italic;
+    text-shadow: 3px 6px rgba(0, 0, 0, 0.25);
   }
 
   .weather__map {

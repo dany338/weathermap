@@ -31,16 +31,21 @@ const CardWeather = ({ id, name, coord, weather, main }) => {
 
   return (
     <Container id={id}>
-      <img
-        className="weather__thumbnail"
-        src={`${BASE_PATH_IMG}${icon}@2x.png`}
-        alt="Weather Find"
-      />
+      <div class="weather__box">
+        <div class="temp">{Math.round(temp)}°c</div>
+        <div class="weather">
+          <img
+            className="weather__thumbnail"
+            src={`${BASE_PATH_IMG}${icon}@2x.png`}
+            alt="Weather Find"
+          />
+        </div>
+      </div>
       <div className="weather__info">
         <img
-          className="weather__avatar"
-          src={icon ? (`${BASE_PATH_IMG}${icon}@2x.png`) : ('https://via.placeholder.com/150.png')}
-          alt="Movie Show Time Finder"
+            className="weather__avatar"
+            src={icon ? (`${BASE_PATH_IMG}${icon}@2x.png`) : ('https://via.placeholder.com/150.png')}
+            alt="Movie Show Time Finder"
         />
         <div className="weather__text">
           <h4>{`Temp: ${temp} • Min: ${temp_min} • Max: ${temp_max} • Humidity: ${humidity} • Pressure ${pressure}`}</h4>
