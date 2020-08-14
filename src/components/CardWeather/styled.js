@@ -26,9 +26,9 @@ export const Container = styled.div`
   }
 
   .weather__map {
-    display: flex;
-    margin-top: 10px;
-    padding-right: 30px;
+    width: 100%;
+    height: 100%;
+    flex: 1;
   }
 
   .weather__text {

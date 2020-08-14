@@ -21,7 +21,7 @@ const Weather = () => {
     <Container>
       <h2>Weather</h2>
       <div className="recommended__weather">
-        {!isLoading ? (
+        {isLoading ? (
           <div style={{justifyContent: 'flex-end', width: '100%'}}>
             Loading information wait moment please...
             <SkeletonTheme color="#ccc" highlightColor="lightgray">

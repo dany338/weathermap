@@ -9,20 +9,13 @@ import assets from '../../assets';
 import { useWeather } from '../../infraestructure/hooks';
 
 const Header = () => {
-  const { query, getWeatherSearchByCityRequest } = useWeather();
+  const { filter, getWeatherSearchByCityRequest } = useWeather();
 
   const handleChangeQuery = async e => {
-    const { value } = e.target.value;
-    if(value.length > 2) {
-      const { msg, err } = await getWeatherSearchByCityRequest(value);
-      if(err) {
-        Swal.fire({
-          title: 'Oops...',
-          icon: 'error',
-          text: `Something went wrong! ${msg}`,
-          confirmButtonText: 'OK'
-        })
-      }
+    const { value } = e.currentTarget;
+    const { msg, err } = await getWeatherSearchByCityRequest(value);
+    if(!err) {
+      console.log('sin error');
     }
   };
 
@@ -37,13 +30,13 @@ const Header = () => {
         />
       </div>
       <div className="header__input">
-        <input onChange={(e) => handleChangeQuery(e)} placeholder="Search city enter min 3 letters" type="text" value={query} name="search" />
+        <input onChange={(e) => handleChangeQuery(e)} placeholder="Search city" type="text" value={filter.query} name="search" />
         <i className="material-icons header__inputButton">search</i>
       </div>
       <div className="header__icons">
         <i className="material-icons header__icon">apps</i>
         <i className="material-icons header__icon">notifications</i>
-        {query && (<span className="header__text">{query}</span>)}
+        {filter.query && (<span className="header__text">{filter.query}</span>)}
         <img
           className="header__avatar"
           src={assets.defaultAvatar}

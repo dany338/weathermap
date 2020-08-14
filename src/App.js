@@ -6,7 +6,6 @@ import { BASE_FONT_SIZE } from './infraestructure/config/const';
 import themes from './themes';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import Nav from './components/Nav';
 import ErrorBoundary from './components/ErrorBoundary';
 /* Pages */
 const Weather = lazy(() => import('./pages/Weather'));
@@ -98,7 +97,6 @@ const App = () => {
               <div className="app__page">
                 <Sidebar />
                 <hr />
-                <Nav />
                 <Switch>
                   <Route exact path="/" component={Weather} />
                 </Switch>

@@ -1,16 +1,33 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import { GoogleMap, Marker } from 'react-google-maps';
+import { compose, withProps } from "recompose";
+import { GoogleMap, Marker, withGoogleMap, withScriptjs } from 'react-google-maps';
 /* Style Components */
 import { Container } from './styled';
 /* Constants */
-import { BASE_PATH_IMG } from '../../infraestructure/config/const';
+import { BASE_PATH_IMG, API_KEY_GOOGLE_MAP } from '../../infraestructure/config/const';
 
 const CardWeather = ({ id, name, coord, weather, main }) => {
   const { main: title, description, icon } = weather[0];
   const { temp, temp_min, temp_max, humidity, pressure } = main;
   const { lon: lng, lat } = coord;
+
+  const MapWithAMarker = compose(
+    withProps({
+      googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${API_KEY_GOOGLE_MAP}&v=3.exp&libraries=geometry,drawing,places`,
+      loadingElement: <div style={{ height: `100%` }} />,
+      containerElement: <div style={{ height: `400px` }} />,
+      mapElement: <div style={{ height: `100%` }} />
+    }),
+    withScriptjs,
+    withGoogleMap
+  )(props => (
+    <GoogleMap defaultZoom={8} defaultCenter={{ lat, lng }}>
+      <Marker position={{ lat, lng }} />
+    </GoogleMap>
+  ));
+
 
   return (
     <Container id={id}>
@@ -32,12 +49,7 @@ const CardWeather = ({ id, name, coord, weather, main }) => {
         </div>
       </div>
       <div className="weather__map">
-        <GoogleMap
-          defaultZoom={8}
-          defaultCenter={{ lat, lng }}
-        >
-          <Marker position={{ lat, lng }} />
-        </GoogleMap>
+        <MapWithAMarker />
       </div>
     </Container>
   )

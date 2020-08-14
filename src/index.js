@@ -6,11 +6,9 @@ import * as serviceWorker from './serviceWorker';
 import Provider from './infraestructure/store';
 
 ReactDOM.render(
-  <React.StrictMode>
     <Provider>
       <App />
-    </Provider>
-  </React.StrictMode>,
+    </Provider>,
   document.getElementById('root')
 );
 
