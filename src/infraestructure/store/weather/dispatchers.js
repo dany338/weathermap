@@ -9,15 +9,17 @@ export const getWeatherSearchByCityRequest = query => {
   return async dispatch => {
     dispatch(weatherSearchByCityInit());
     try {
-      const data = await WeatherServices.apiWeather.searchMovies(query);
+      const data = await WeatherServices.apiWeather.getWeather(query);
       if(typeof data === 'object') {
-        dispatch(weatherSearchByCitySuccess(data.results));
-      } else if(typeof data === 'string') {
-        dispatch(weatherSearchByCityError('An error was generated please consult the administrator!'));
+        dispatch(weatherSearchByCitySuccess(data.results, query));
+        return { msg: 'weather find', err: false };
       }
+      dispatch(weatherSearchByCityError('An error was generated please consult the administrator!'));
+      return { msg: data, err: true };
     } catch (error) {
       console.error(error);
       dispatch(weatherSearchByCityError('An error was generated please consult the administrator!'));
+      return { msg: 'An error was generated please consult the administrator!', err: true };
     }
   };
 };

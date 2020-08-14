@@ -1,13 +1,5 @@
-import useLogin from './useLogin';
-import useMovies from './useWeather';
-import useNotifications from './useNotifications';
-import useReviews from './useReviews';
-import useSubscriptions from './useSubscriptions';
+import useWeather from './useWeather';
 
 export {
-  useLogin,
-  useMovies,
-  useNotifications,
-  useReviews,
-  useSubscriptions
+  useWeather
 };

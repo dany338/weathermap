@@ -5,7 +5,7 @@ import {
 } from './types';
 
 const initialState = {
-  data: {},
+  data: null,
   query: '',
   isLoading: false,
   error: null,
@@ -16,7 +16,7 @@ const weather = (state = initialState, { type, payload }) => {
     case WEATHER_SEARCH_BY_CITY_INIT: {
       return {
         ...state,
-        error: '',
+        error: null,
         isLoading: true,
       };
     }
@@ -25,11 +25,9 @@ const weather = (state = initialState, { type, payload }) => {
       return {
         ...state,
         data: payload.data,
-        totalPages: payload.totalPages,
-        totalResults: payload.totalResults,
-        currentPage: payload.page,
+        query: payload.query,
         isLoading: false,
-        error: ''
+        error: null
       };
     }
 
